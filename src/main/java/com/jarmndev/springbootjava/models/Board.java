@@ -5,7 +5,10 @@ import javax.persistence.Column;
 import java.util.Objects;
 
 @Entity
-@Table(name = "boards")
+@Table(name = "boards",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = {"user_id", "name"})
+        })
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
